@@ -2,7 +2,6 @@ package schoolmanagmentproject.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +16,6 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Basic
     private String name;
 
     @ManyToOne
@@ -28,6 +26,13 @@ public class Course {
 
     @ManyToMany(mappedBy = "courses")
     private List<Student> students;
+
+    public Course() {
+    }
+
+    public Course(String name) {
+        this.name = name;
+    }
 
     public int getId() {
         return this.id;
@@ -90,5 +95,4 @@ public class Course {
     public void removeStudent(Student student) {
         getStudents().remove(student);
     }
-
 }

@@ -1,6 +1,6 @@
 package schoolmanagmentproject;
 
-public class SchoolManagmentProject {
+public class LukaMenu {
 
     static boolean loop = true;
     static Tools tools = new Tools();
@@ -73,11 +73,11 @@ public class SchoolManagmentProject {
         }
 
 //        Add educations of different kind
-//• Update education information
+//• Update education information2
 //• Show information about a specific education
 //• Show all educations
-//• Remove an education
-//• Add courses of different kind
+
+
 //• Update course information
 //• Show information about a specific course
 //• Show all courses
