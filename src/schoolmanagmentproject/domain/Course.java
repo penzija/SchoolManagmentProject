@@ -95,4 +95,9 @@ public class Course {
     public void removeStudent(Student student) {
         getStudents().remove(student);
     }
+
+    @Override
+    public String toString() {
+        return "Course{" + "id=" + id + ", name=" + name + ", teacher=" + teacher + '}';
+    }
 }

@@ -15,12 +15,11 @@ public class StudentMethods {
         studentDao.delete(id);
     }
 
-    public static void Update(int id, String newName) {
+    public static void update(int id, String newName) {
         studentDao.update(id, newName);
     }
 
     public static void showAll() {
         studentDao.showAll();
     }
-
 }

@@ -64,4 +64,8 @@ public class Teacher {
         course.setTeacher(null);
     }
 
+    @Override
+    public String toString() {
+        return "Teacher{" + "id=" + id + ", name=" + name + '}';
+    }
 }

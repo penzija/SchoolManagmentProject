@@ -88,4 +88,9 @@ public class Education {
         getCourses().remove(course);
         course.getEducations().remove(this);
     }
+
+    @Override
+    public String toString() {
+        return "Education{" + "id=" + id + ", name=" + name + '}';
+    }
 }

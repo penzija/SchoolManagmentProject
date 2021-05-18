@@ -19,40 +19,59 @@ public class CourseDao {
         em.getTransaction().begin();
         em.persist(c);
         em.getTransaction().commit();
-
         em.close();
     }
 
-    void remove(int id) {
+    void remove(String courseName) {
         EntityManager em = emf.createEntityManager();
 
-        Course c = em.find(Course.class, id);
+        try {
+            TypedQuery<Course> q = em.createQuery("SELECT c FROM Course c WHERE c.name =:n", Course.class);
+            q.setParameter("n", courseName);
 
-        em.getTransaction().begin();
-        em.remove(c);
-        em.getTransaction().commit();
+            Course c = q.getSingleResult();
 
-        em.close();
+            em.getTransaction().begin();
+            em.remove(c);
+            em.getTransaction().commit();
+            em.close();
+        } catch (Exception e) {
+            System.out.println("");
+            System.out.println("This course does not exist!");
+        }
+    }
+
+    void removeById(int courseId) {
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            Course course = em.find(Course.class, courseId);
+
+            em.getTransaction().begin();
+            em.remove(course);
+            em.getTransaction().commit();
+            em.close();
+        } catch (Exception e) {
+            System.out.println("");
+            System.out.println("A course with this ID does not exist!");
+        }
     }
 
     void update(int id, String newName) {
         EntityManager em = emf.createEntityManager();
 
-        Course c = em.find(Course.class, id);
+        try {
+            Course course = em.find(Course.class, id);
 
-        if (c == null) {
+            em.getTransaction().begin();
+            course.setName(newName);
+            em.getTransaction().commit();
+            em.close();
+
+        } catch (Exception e) {
             System.out.println("There is no course with that id.");
+            System.out.println("");
         }
-
-        System.out.println(c);
-
-        em.getTransaction().begin();
-
-        c.setName(newName);
-
-        em.getTransaction().commit();
-
-        em.close();
     }
 
     void showAll() {
@@ -62,11 +81,8 @@ public class CourseDao {
         List<Course> c = q.getResultList();
 
         for (Course course : c) {
-            System.out.println(course);
-
+            System.out.println("ID: " + course.getId() + " NAME: " + course.getName());
         }
-
         em.close();
     }
-
 }

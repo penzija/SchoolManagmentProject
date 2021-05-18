@@ -11,4 +11,12 @@ public class EducationMethods {
     public static void remove(int id) {
         educationDao.remove(id);
     }
+
+    public static void update(int id, String newName) {
+        educationDao.update(id, newName);
+    }
+
+    public static void showAll() {
+        educationDao.showAll();
+    }
 }

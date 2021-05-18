@@ -50,9 +50,8 @@ public class StudentDao {
         List<Student> students = q.getResultList();
 
         for (Student student : students) {
-            System.out.println(student);
+            System.out.println("ID: " + student.getId() + " NAME: " + student.getName());
         }
         em.close();
     }
-
 }

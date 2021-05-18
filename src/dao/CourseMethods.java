@@ -8,8 +8,12 @@ public class CourseMethods {
         courseDao.add(nameCourse);
     }
 
-    public static void remove(int id) {
-        courseDao.remove(id);
+    public static void remove(String courseName) {
+        courseDao.remove(courseName);
+    }
+
+    public static void removeById(int courseId) {
+        courseDao.removeById(courseId);
     }
 
     public static void update(int id, String newName) {
@@ -19,5 +23,4 @@ public class CourseMethods {
     public static void showAll() {
         courseDao.showAll();
     }
-
 }
